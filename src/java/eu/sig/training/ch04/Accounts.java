@@ -15,4 +15,14 @@ public class Accounts {
         return sum % 11 == 0;
     }
     // end::isValid[]
+
+    public void addInterest(Money balance) {
+        Money interest = balance.multiply(INTEREST_PERCENTAGE);
+
+        if (interest.greaterThan(0)) {
+            balance.add(interest);
+        } else {
+            balance.substract(interest);
+        }
+    }
 }
