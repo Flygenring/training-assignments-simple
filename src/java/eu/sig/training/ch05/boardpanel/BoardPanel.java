@@ -4,52 +4,77 @@ import java.awt.Graphics;
 import java.util.List;
 
 public class BoardPanel {
-    @SuppressWarnings("unused")
-    // tag::render[]
     /**
-     * Renders a single square on the given graphics context on the specified
+     * Renders a single square on its given graphics context on the specified
      * rectangle.
      * 
      * @param square
      *            The square to render.
-     * @param g
-     *            The graphics context to draw on.
-     * @param x
-     *            The x position to start drawing.
-     * @param y
-     *            The y position to start drawing.
-     * @param w
-     *            The width of this square (in pixels).
-     * @param h
-     *            The height of this square (in pixels).
+     * @param origin
+     *            The x and y position to start drawing.
+     * @param size
+     *            The width and height of this square (in pixels).
      */
-    private void render(Square square, Graphics g, int x, int y, int w, int h) {
-        square.getSprite().draw(g, x, y, w, h);
+    private void render(Square square, Point origin, Dimension size) {
+        square.getSprite().draw(origin, size);
+
         for (Unit unit : square.getOccupants()) {
-            unit.getSprite().draw(g, x, y, w, h);
+            unit.getSprite().draw(origin, size);
         }
     }
-    // end::render[]
 
+    private class Point {
+        int x;
+        int y;
+
+        public Point(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    private class Dimension {
+        int width;
+        int height;
+
+        public Dimension(int width, int height) {
+            this.width = width;
+            this.height = height;
+        }
+    }
+
+    /**
+     * @param graphics
+     *            The graphics context to draw on.
+    */
     private class Sprite {
-        @SuppressWarnings("unused")
-        public void draw(Graphics g, int x, int y, int w, int h) {
+        Graphics graphics;
+
+        public Sprite(graphics) {
+            this.graphics = graphics;
+        }
+
+        public void draw(Point origin, Dimension size) {
 
         }
     }
 
     private class Unit {
+        Sprite sprite;
+
+        public Unit(sprite) {
+            this.sprite = sprite;
+        }
+
         public Sprite getSprite() {
-            return null;
+            return sprite;
         }
     }
 
     private class Square extends Unit {
 
         public List<Unit> getOccupants() {
-            return null;
+            return new List<Unit>();
         }
-
     }
-
 }
