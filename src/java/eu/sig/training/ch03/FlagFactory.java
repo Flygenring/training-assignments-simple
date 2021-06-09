@@ -5,8 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class FlagFactory {
-
-    // tag::getFlag[]
     public List<Color> getFlagColors(Nationality nationality) {
         HashMap<Nationality, List<Color>> flagColors = setupFlagColors();
         List<Color> result;
@@ -28,6 +26,4 @@ public class FlagFactory {
         map.put(BULGARIAN, Arrays.asList(Color.WHITE, Color.GREEN, Color.RED));
         map.put(RUSSIA, Arrays.asList(Color.WHITE, Color.BLUE, Color.RED));
     }
-    // end::getFlag[]
-
 }
